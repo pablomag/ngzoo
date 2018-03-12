@@ -1,0 +1,105 @@
+html, body
+{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: #ddefed;
+}
+
+#logo
+{
+	width: 10rem;
+	height: 10rem;
+}
+
+#navbar
+{
+	margin: 0;
+	padding: .8rem;
+	background-color: black;
+}
+
+.nav-link
+{
+	background-color: black;
+	color: white;
+}
+
+.nav-link:hover
+{
+	background-color: darkgrey;
+	color: white;
+}
+
+#header
+{
+	margin: 0;
+	padding: 2rem;
+	background: url("../images/zoo_header.jpg");
+}
+
+#footer
+{
+	margin: 0;
+	padding: 3rem;
+	background-color: darkgray;
+	color: white;
+}
+
+#jumbotron
+{
+	margin-top: 3rem;
+	padding: 3rem;
+	background-color: #ffbb33;
+	color: white;
+}
+
+#jumbotron>h1
+{
+	color: white;
+}
+
+#buttons
+{
+	margin-top: 4rem;
+}
+
+#buttons > .btn
+{
+	margin: 1rem;
+	padding: .8rem;
+}
+
+.margin-1
+{
+	float: left;
+}
+
+.margin-3
+{
+	float: right;
+}
+
+.margin-7
+{
+	margin-top: 3rem !important;
+	margin-left: 3rem !important;
+}
+
+.btn-primary, .btn-primary:link
+{
+	background-color: #992222;
+	border-color: #992222;
+}
+
+.btn-primary:hover
+{
+	background-color: #cc4444;
+	border-color: #cc4444;
+}
+
+.active
+{
+	background-color: red !important;
+	border-color: red !important;
+}

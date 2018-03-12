@@ -1,0 +1,7 @@
+<h1>{{ name }}</h1>
+<h2>{{ location }}</h2>
+<h3>{{ area }}</h3>
+<p *ngIf="open">Abierto</p>
+<p *ngIf="!open">Cerrado</p>
+
+<button (click)="send()">Send data</button>
