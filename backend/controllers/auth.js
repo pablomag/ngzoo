@@ -35,7 +35,7 @@ function login(req, res)
 								}
 							} else {
 
-								res.status(200).send({ message: 'User or password is incorrect' });
+								res.status(500).send({ message: 'User or password is incorrect' });
 							}
 						});
 					} else {

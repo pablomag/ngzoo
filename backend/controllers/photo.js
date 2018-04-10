@@ -43,7 +43,7 @@ function upload(req, res)
 			console.log('file old: ' + response.files.old);*/
 
 			uploadService.finishUpload(response.files);
-			res.status(200).send({ message: response.message });
+			res.status(200).send({ message: response.message, image: response.files.name });
 		}
 	}
 }

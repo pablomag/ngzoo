@@ -50,7 +50,7 @@ exports.updateDatabase = function(photo, callback)
 						file_old = (animal.image != null ? "./uploads/animals/" + animal.image : null);
 						file_dest = "./uploads/animals/" + file_name;
 
-						files = { src: file_source, dest: file_dest, old: file_old };
+						files = { src: file_source, dest: file_dest, old: file_old, name: file_name };
 
 						res = { status: 200, message: 'Database updated', data: animal, files: files };
 						//console.log(res);
@@ -81,7 +81,7 @@ exports.updateDatabase = function(photo, callback)
 						file_old = (user.image != null ? "./uploads/users/" + user.image : null);
 						file_dest = "./uploads/users/" + file_name;
 
-						let files = { src: file_source, dest: file_dest, old: file_old };
+						let files = { src: file_source, dest: file_dest, old: file_old, name: file_name };
 
 						res = { status: 200, message: 'Database updated', data: user, files: files };
 						//console.log(res);

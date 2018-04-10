@@ -3,12 +3,25 @@
 </div>
 
 <nav id="navbar" class="navbar col-sm-12">
-	<div class="container-fluid col-sm-6">
+	<div class="nav-center col-sm-6 offset-3">
 		<a class="btn btn-primary" [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a>
 		<a class="btn btn-primary" [routerLink]="['/animals']" [routerLinkActive]="['active']">Animals</a>
 		<a class="btn btn-primary" [routerLink]="['/keepers']" [routerLinkActive]="['active']">Keepers</a>
 		<a class="btn btn-primary" [routerLink]="['/store']" [routerLinkActive]="['active']">Store</a>
 		<a class="btn btn-primary" [routerLink]="['/contact']" [routerLinkActive]="['active']">Contact</a>
+	</div>
+	<div class="nav-right offset-1 col-sm-2" *ngIf="!identity">
+		<a class="btn btn-invis" [routerLink]="['/register']" [routerLinkActive]="['inactive']">Register</a>
+		<a class="btn btn-invis" [routerLink]="['/login']" [routerLinkActive]="['inactive']">Login</a>
+	</div>
+
+	<div class="nav-right col-sm-3" *ngIf="identity">
+		<div class="profile-picture-holder" *ngIf="identity.image">
+			<img src="{{ url + '/photo/' + identity.image }}" class="profile-picture img-fluid">
+		</div>
+		<a class="btn btn-invis" [routerLink]="['/profile']">{{ identity.name }} {{ identity.surname }}</a>
+		<a *ngIf="identity.role == 'ROLE_ADMIN'" class="btn btn-invis" [routerLink]="['/admin']" [routerLinkActive]="['inactive']">+panel</a>
+		<a class="btn btn-invis" (click)="logout()" [routerLinkActive]="['inactive']">Logout</a>
 	</div>
 </nav>
 
@@ -23,5 +36,5 @@
 </div>
 
 <div id="footer" class="col-sm-12">
-	<footer>Copyright n shit</footer>
+	<footer>{{ copyright }}</footer>
 </div>

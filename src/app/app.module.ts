@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { routing, appRoutingProviders } from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { AdminModule } from './admin/admin.module';
 
 import { AppComponent } from './app.component';
@@ -11,6 +13,10 @@ import { AppComponent } from './app.component';
 import { FourOhFourComponent } from './components/errors/four-oh-four.component';
 
 import { HomeComponent } from './components/home.component';
+import { LoginComponent } from './components/login.component';
+import { RegisterComponent } from './components/register.component';
+import { ProfileComponent } from './components/profile.component';
+
 import { AnimalsComponent } from './components/animals/animals.component';
 import { KeepersComponent } from './components/keepers/keepers.component';
 import { StoreComponent } from './components/store/store.component';
@@ -24,6 +30,9 @@ import { ContactComponent } from './components/contact/contact.component';
 		AppComponent,
 		FourOhFourComponent,
 		HomeComponent,
+		LoginComponent,
+		RegisterComponent,
+		ProfileComponent,
 		AnimalsComponent,
 		KeepersComponent,
 		ContactComponent,
@@ -31,6 +40,7 @@ import { ContactComponent } from './components/contact/contact.component';
 	],
 	imports:
 	[
+		HttpClientModule,
 		BrowserModule,
 		FormsModule,
 		routing,

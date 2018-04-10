@@ -69,22 +69,48 @@ function update(req, res)
 	let userId = req.params.id;
 	let update = req.body;
 
-	User.findByIdAndUpdate(userId, update, {new: true}, (err, user) =>
+	if(update.password)
 	{
-		if(err)
+		bcrypt.hash(update.password, null, null, (err, hash) =>
 		{
-			res.status(500).send({ message: 'Could not update user' });
-		} else {
-
-			if(user)
+			if(err)
 			{
-				res.status(200).send({ user: user });
+				delete update.password;
+				console.log('password not updated');
+				saveData();
 			} else {
 
-				res.status(404).send({ message: 'Could not find user' });
+				update.password = hash;
+				console.log('password encrypted');
+				saveData();
 			}
-		}
-	});
+		});
+	} else {
+
+		delete update.password;
+		console.log('no password provided');
+		saveData();
+	}
+
+	function saveData()
+	{
+		User.findByIdAndUpdate(userId, update, {new: false}, (err, user) =>
+		{
+			if(err)
+			{
+				res.status(500).send({ message: 'Could not update user' });
+			} else {
+
+				if(user)
+				{
+					res.status(200).send({ user: user });
+				} else {
+
+					res.status(404).send({ message: 'Could not find user' });
+				}
+			}
+		});
+	}
 }
 
 function destroy(req, res)

@@ -2,15 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from './components/main/main.component';
+
 import { ListComponent } from './components/animals/list.component';
 import { CreateComponent } from './components/animals/create.component';
 import { EditComponent } from './components/animals/edit.component';
+
+import { GuardService } from '../services/guard.service';
 
 const adminRoutes: Routes =
 [
 	{
 		path: 'admin',
 		component: MainComponent,
+		canActivate: [GuardService],
 		children:
 		[
 			{ path: 'list', component: ListComponent },

@@ -7,6 +7,16 @@ let app = express();
 
 let middlewareAuth = require('./middleware/authenticated');
 
+/* Headers */
+app.use((req, res, next) =>
+{
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+	res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+	res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+	next();
+});
+
 /* Routes */
 app.get('/', middlewareAuth.ensureAuth, (req, res) =>
 {
@@ -32,16 +42,6 @@ app.use('/api', user_routes);
 app.use('/api', keeper_routes);
 app.use('/api', animal_routes);
 app.use('/api', photo_routes);
-
-/* Headers */
-app.use((req, res, next) =>
-{
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-	res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-	res.header('Allow', 'GET, POST, OPTIONS, PUT, DELET');
-	next();
-});
 
 /* Exports */
 module.exports = app;

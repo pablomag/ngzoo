@@ -1,1 +1,30 @@
-<h3>{{ title }}</h3>
+<div class="lg-8" *ngIf="animal">
+	<h3>{{ title }}</h3>
+
+	<form #formCreateAnimal="ngForm" (submit)="onSubmit()">
+		<p>
+			<label>Name</label>
+			<input type="text" #name="ngModel" name="name" [(ngModel)]="animal.name" class="form-control" required/>
+			<span *ngIf="!name.valid && name.touched">Field name required</span>
+		</p>
+		<p>
+			<label>Description</label>
+			<input type="text" name="description" #description="ngModel" [(ngModel)]="animal.description" class="form-control"/>
+		</p>
+		<p>
+			<label>Origin</label>
+			<input type="text" name="origin" #origin="ngModel" [(ngModel)]="animal.origin" class="form-control" required/>
+			<span *ngIf="!origin.valid && origin.touched">Field origin required</span>
+		</p>
+		<p>
+			<label>Year</label>
+			<input type="text" name="year" #year="ngModel" [(ngModel)]="animal.year" class="form-control" required/>
+			<span *ngIf="!year.valid && year.touched">Field year required</span>
+		</p>
+		<input type="file" />
+		<!-- continue from here, insert image and shit -->
+		<p>
+			<button class="btn btn-success">Create</button>
+		</p>
+	</form>
+</div>

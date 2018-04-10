@@ -10,6 +10,9 @@ import { ListComponent } from './components/animals/list.component';
 import { CreateComponent } from './components/animals/create.component';
 import { EditComponent } from './components/animals/edit.component';
 
+import { GuardService } from '../services/guard.service';
+import { UserService } from '../services/user.service';
+
 @NgModule(
 {
 	declarations:
@@ -30,7 +33,11 @@ import { EditComponent } from './components/animals/edit.component';
 	[
 		MainComponent
 	],
-	providers: []
+	providers:
+	[
+		GuardService,
+		UserService
+	]
 })
 
 export class AdminModule {}

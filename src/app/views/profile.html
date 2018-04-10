@@ -1,0 +1,55 @@
+<div class="col-sm-10 offset-1" [@fade_fx]>
+	<div class="jumbotron" id="jumbotron">
+		<h1>{{ title }}</h1>
+
+		<div class="col-sm-8" *ngIf="status != 'error'">
+			<form #updateForm="ngForm" (ngSubmit)="onSubmit()" class="col-sm-6">
+				<p><label>Name</label>
+					<input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" required>
+					<span *ngIf="!name.valid && name.touched">Please fill out this field</span>
+				</p>
+				<p><label>Surname</label>
+					<input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname" class="form-control" required>
+					<span *ngIf="!surname.valid && surname.touched">Please fill out this field</span>
+				</p>
+				<p><label>E-mail</label>
+					<input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required>
+					<span *ngIf="!email.valid && email.touched">Please fill out this field</span>
+				</p>
+				<p><label>Change password</label>
+					<input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control">
+				</p>
+				<p><label>Role</label>
+					<select name="role" #role="ngModel" [(ngModel)]="user.role">
+						<option value="ROLE_USER">User</option>
+						<option value="ROLE_KEEPER">Keeper</option>
+						<option value="ROLE_ADMIN">Admin</option>
+					</select>
+				</p>
+				<div>Profile picture
+					<div *ngIf="user.image">
+						<img src="{{ url + '/photo/' + user.image }}" class="img-fluid">
+					</div>
+					<br>
+					<input type="file" placeholder="Profile picture" (change)="updateFiles($event)">
+				</div>
+				<br>
+				<button class="btn btn-success" [disabled]="!updateForm.valid">Update</button>
+			</form>
+		</div>
+
+		<div class="clearfix"></div>
+		<br>
+
+		<div class="col-sm-8 bg-danger modal-body" *ngIf="status == 'error'">
+			<h3>Oops! Something went wrong...</h3>
+			<p>{{ this.message }}</p>
+
+			<button (click)="status = 'reset'" class="btn btn-primary">Back</button>
+		</div>
+
+		<div class="col-sm-8 bg-success modal-body" *ngIf="status == 'success'">
+			<p>{{ this.message }}</p>
+		</div>
+	</div>
+</div>

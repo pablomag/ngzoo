@@ -15,7 +15,7 @@ html, body
 #navbar
 {
 	margin: 0;
-	padding: .8rem;
+	padding: .3rem;
 	background-color: black;
 }
 
@@ -29,6 +29,22 @@ html, body
 {
 	background-color: darkgrey;
 	color: white;
+}
+
+.nav-center
+{
+	text-align: center;
+}
+
+.nav-center a
+{
+	margin: 0 .5rem 0 .5rem;
+	padding: .5rem 2rem .5rem 2rem;
+}
+
+.nav-right
+{
+	text-align: right;
 }
 
 #header
@@ -86,20 +102,64 @@ html, body
 	margin-left: 3rem !important;
 }
 
+.profile-picture-holder
+{
+	width: 3rem;
+	height: 3rem;
+	margin-top: .1rem;
+	padding: 0;
+	display: inline-block;
+}
+
+.profile-picture
+{
+	width: 3rem;
+	height: 3rem;
+	margin: 0;
+	padding: 0;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.active
+{
+	background-color: #ffbb33 !important;
+}
+
+.inactive
+{
+	background: none !important;
+	color: gray !important;
+}
+
+.btn, .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus
+{
+	border: none !important;
+	outline: none !important;
+	outline-width: 0 !important;
+	outline-style: none !important;
+	outline-color: transparent !important;
+	box-shadow: none !important;
+}
+
+.btn-invis, .btn-invis:link
+{
+	background: none;
+	color: white !important;
+}
+
+.btn-invis:hover
+{
+	background: none;
+	color: #ffbb33;
+}
+
 .btn-primary, .btn-primary:link
 {
 	background-color: #992222;
-	border-color: #992222;
 }
 
 .btn-primary:hover
 {
 	background-color: #cc4444;
-	border-color: #cc4444;
-}
-
-.active
-{
-	background-color: red !important;
-	border-color: red !important;
 }
