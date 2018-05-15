@@ -1,25 +1,55 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AnimalService } from '../../services/animal.service';
+import { Animal } from '../../models/animal';
+
+import { GLOBAL } from '../../globals';
+
 import { fade_fx } from '../animation.component';
 
 @Component(
 	{
 		selector: 'animals',
 		templateUrl: '../../views/animals/animals.html',
-		animations: [fade_fx]
+		animations: [fade_fx],
+		providers: [AnimalService]
 	})
 
 export class AnimalsComponent implements OnInit
 {
 	public title: string;
+	public animals: Animal[];
 
-	constructor()
-	{
+	public url: string;
+
+	constructor
+	(
+		private _animalService: AnimalService
+	){
+		this.url = GLOBAL.app_url;
 		this.title = 'Animals';
 	}
 
 	ngOnInit()
 	{
-		console.log(localStorage.getItem('email'));
+		this.showAnimals();
+	}
+
+	showAnimals()
+	{
+		this._animalService.showAnimals().subscribe
+		(
+			(response: any) =>
+			{
+				if (response.animals)
+				{
+					this.animals = response.animals;
+				}
+			},
+			(error: any) =>
+			{
+				console.log(error);
+			}
+		);
 	}
 }

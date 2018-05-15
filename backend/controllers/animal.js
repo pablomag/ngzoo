@@ -1,12 +1,16 @@
 'use strict';
 
-let User = require('../models/user');
+//let User = require('../models/user');
 let Animal = require('../models/animal');
+
+let uploadService = require('../services/upload');
 
 function create(req, res)
 {
 	let animal = new Animal;
-	let params = req.body;
+	let data = req.body;
+
+	const params = JSON.parse(data.json);
 
 	if(params && params.name)
 	{
@@ -24,7 +28,7 @@ function create(req, res)
 						animal.description = params.description;
 						animal.origin = params.origin;
 						animal.year = params.year;
-						animal.image = null;
+						animal.image = params.image;
 						animal.keeper = req.user.sub;
 
 						animal.save((err, data) =>
@@ -61,7 +65,7 @@ function list(req, res)
 	{
 		if(err)
 		{
-			res.status(500).send({ message: 'There was an error querying the DB' });
+			res.status(500).send({ message: 'There was an error querying the DB', error: err });
 		} else {
 
 			if(!animals)
@@ -83,7 +87,7 @@ function read(req, res)
 	{
 		if(err)
 		{
-			res.status(500).send({ message: 'There was an error querying the DB' });
+			res.status(500).send({ message: 'There was an error querying the DB', error: err });
 		} else {
 
 			if (!animal) {
@@ -99,7 +103,9 @@ function read(req, res)
 function update(req, res)
 {
 	let animalId = req.params.id;
-	let update = req.body;
+	let data = req.body;
+
+	const update = JSON.parse(data.json);
 
 	Animal.findByIdAndUpdate(animalId, update, { new: true }, (err, animal) =>
 	{
@@ -132,6 +138,13 @@ function destroy(req, res)
 
 			if(animal)
 			{
+				let deleteFile = "./uploads/animals/" + animal.image;
+
+				if (animal.image != null)
+				{
+					uploadService.removeFile(deleteFile);
+				}
+
 				res.status(200).send({ animal });
 			} else {
 

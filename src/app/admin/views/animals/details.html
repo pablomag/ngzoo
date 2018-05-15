@@ -1,0 +1,11 @@
+<h3 [@fade_fx]>{{ title }}</h3>
+
+<ul *ngIf="animal">
+	<li class="clearfix list-unstyled" style="line-height: 3rem;">
+		{{ animal.name }} from {{ animal.origin }}
+		<div *ngIf="animal.image && animal.image != null" class="col-sm-6">
+			<img src="{{ url + '/animal/photo/' + animal.image }}" class="img-fluid">
+		</div>
+		by {{ animal.keeper.name }} @ {{ animal.year }}
+	</li>
+</ul>

@@ -1,1 +1,13 @@
 <h1 [@fade_fx]>{{ title }}</h1>
+
+<div [@fade_fx] class="card-columns" *ngIf="animals">
+	<a routerLink="['/animal', animal._id]">
+		<div class="card" *ngFor="let animal of animals">
+			<img class="card-img-top" src="{{ url + '/animal/photo/' + animal.image }}" *ngIf="animal.image">
+			<div class="card-body" style="color: white;">
+				<h5 class="card-title">{{ animal.name }} from {{ animal.origin }}</h5>
+				<p class="card-text">by {{ animal.keeper.name }} @ {{ animal.year }}</p>
+			</div>
+		</div>
+	</a>
+</div>

@@ -17,7 +17,7 @@
 
 	<div class="nav-right col-sm-3" *ngIf="identity">
 		<div class="profile-picture-holder" *ngIf="identity.image">
-			<img src="{{ url + '/photo/' + identity.image }}" class="profile-picture img-fluid">
+			<img src="{{ url + '/user/photo/' + identity.image }}" class="profile-picture img-fluid">
 		</div>
 		<a class="btn btn-invis" [routerLink]="['/profile']">{{ identity.name }} {{ identity.surname }}</a>
 		<a *ngIf="identity.role == 'ROLE_ADMIN'" class="btn btn-invis" [routerLink]="['/admin']" [routerLinkActive]="['inactive']">+panel</a>
@@ -28,7 +28,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-			<div class="content">
+			<div class="content" style="padding: 3rem;">
 				<router-outlet></router-outlet>
 			</div>
 		</div>

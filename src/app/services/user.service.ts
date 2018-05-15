@@ -15,7 +15,7 @@ export class UserService
 
 	constructor
 	(
-		private http: HttpClient,
+		private _http: HttpClient,
 		private _route: ActivatedRoute,
 		private _router: Router
 	){
@@ -38,14 +38,14 @@ export class UserService
 
 		const data = JSON.stringify(user);
 
-		return this.http.post(this.url + '/user/login', data, this.headers);
+		return this._http.post(this.url + '/user/login', data, this.headers);
 	}
 
 	register(user)
 	{
 		const data = JSON.stringify(user);
 
-		return this.http.post(this.url + '/user/register', data, this.headers);
+		return this._http.post(this.url + '/user/register', data, this.headers);
 	}
 
 	update(user)
@@ -55,7 +55,14 @@ export class UserService
 
 		const data = JSON.stringify(user);
 
-		return this.http.put(this.url + '/user/' + user._id, data, this.headers);
+		return this._http.put(this.url + '/user/' + user._id, data, this.headers);
+	}
+
+	showKeepers()
+	{
+		this.headers = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
+
+		return this._http.get(this.url + '/keepers', this.headers);
 	}
 
 	getIdentity()

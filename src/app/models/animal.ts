@@ -8,6 +8,6 @@ export class Animal
 		public origin: string,
 		public year: number,
 		public image: string,
-		public keeper: string
+		public keeper: any
 	){}
 }

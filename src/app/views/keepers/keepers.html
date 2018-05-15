@@ -1,1 +1,13 @@
-<h1>{{ title }}</h1>
+<h1 [@fade_fx]>{{ title }}</h1>
+
+<div [@fade_fx] class="card-columns" *ngIf="keepers">
+	<a routerLink="['/keeper', keeper._id]">
+		<div class="card" *ngFor="let keeper of keepers">
+			<img class="card-img-top" src="{{ url + '/user/photo/' + keeper.image }}" *ngIf="keeper.image">
+			<div class="card-body" style="color: white;">
+				<h5 class="card-title">{{ keeper.name }} {{ keeper.surname }}</h5>
+				<p class="card-text">Animals in this keeper's care ???</p>
+			</div>
+		</div>
+	</a>
+</div>

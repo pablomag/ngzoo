@@ -41,7 +41,7 @@ exports.updateDatabase = function(photo, callback)
 					//console.log('original err: ' + err);
 
 					err = { status: 500, message: 'Could not update animal image', files: files };
-					//console.log(err);
+					console.log(err);
 					return callback(err);
 				} else {
 
@@ -59,6 +59,7 @@ exports.updateDatabase = function(photo, callback)
 
 						err = { status: 404, message: 'Could not find animal to assign image', files: files };
 						//console.log(err);
+						//should delete the file here
 						return callback(err);
 					}
 				}

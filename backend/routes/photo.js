@@ -13,6 +13,6 @@ let Role = require('../middleware/roles');
 let api = express.Router();
 
 api.post('/:category/:id/upload', [ Auth.ensureAuth, Upload ], PhotoController.upload);
-api.get('/photo/:name', Upload, PhotoController.show);
+api.get('/:category/photo/:name', Upload, PhotoController.show);
 
 module.exports = api;

@@ -28,7 +28,7 @@
 				</p>
 				<div>Profile picture
 					<div *ngIf="user.image">
-						<img src="{{ url + '/photo/' + user.image }}" class="img-fluid">
+						<img src="{{ url + '/user/photo/' + user.image }}" class="img-fluid">
 					</div>
 					<br>
 					<input type="file" placeholder="Profile picture" (change)="updateFiles($event)">

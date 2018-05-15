@@ -21,9 +21,11 @@ export class UploadService
 		this.identity = this._userService.getIdentity();
 	}
 
-	makeFileRequest(files: Array<File>, category, name)
+	makeFileRequest(files: Array<File>, category, name, id = null)
 	{
-		this.url = this.url + '/' + category + '/' + this.identity._id + '/upload';
+		const _id = (id == null ? this.identity._id : id);
+
+		this.url = this.url + '/' + category + '/' + _id + '/upload';
 
 		return new Promise((resolve, reject) =>
 		{

@@ -34,7 +34,7 @@ let animal_routes = require('./routes/animal');
 let photo_routes = require('./routes/photo');
 
 /* Middleware */
-app.use(bodyParser.urlencoded({ extended:false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api', auth_routes);

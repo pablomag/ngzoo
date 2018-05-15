@@ -22,7 +22,6 @@ import { KeepersComponent } from './components/keepers/keepers.component';
 import { StoreComponent } from './components/store/store.component';
 import { ContactComponent } from './components/contact/contact.component';
 
-
 @NgModule(
 {
 	declarations:

@@ -8,7 +8,7 @@ let Role = require('../middleware/roles');
 
 let api = express.Router();
 
-api.post('/animal/add', [ Auth.ensureAuth, Role.isKeeper ], AnimalController.create);
+api.post('/animal/create', [ Auth.ensureAuth, Role.isKeeper ], AnimalController.create);
 api.get('/animals', AnimalController.list);
 api.get('/animal/:id', AnimalController.read);
 api.put('/animal/:id', [ Auth.ensureAuth, Role.isKeeper ], AnimalController.update);
